@@ -31,6 +31,21 @@ namespace BestBuyBestPractices
             {
                 Console.WriteLine(d.Name);
             }
+
+            var pRepo = new DapperProductRepository(conn);
+            Console.WriteLine("Type a new Product Name");
+            var newProductName = Console.ReadLine();
+            Console.WriteLine("Type a new Product Price(double)");
+            var newProductPrice = double.Parse(Console.ReadLine());
+            Console.WriteLine();
+
+            pRepo.CreateProduct(newProductName, newProductPrice, 4);
+            var products = pRepo.GetAllProducts();
+
+            foreach (var p in products)
+            {
+                Console.WriteLine($"{p.ProductID} {p.Name} {p.Price} {p.CategoryID} {p.StockLevel}");
+            }
         }
     }
 }
