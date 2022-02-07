@@ -19,18 +19,18 @@ namespace BestBuyBestPractices
             string connString = config.GetConnectionString("DefaultConnection");
             IDbConnection conn = new MySqlConnection(connString);
 
-            var repo = new DapperDepartmentRepository(conn);
-            Console.WriteLine("Type a new Department Name");
-            var newDepartment = Console.ReadLine();
-            Console.WriteLine();
+            //var repo = new DapperDepartmentRepository(conn);
+            //Console.WriteLine("Type a new Department Name");
+            //var newDepartment = Console.ReadLine();
+            //Console.WriteLine();
 
-            repo.InsertDepartment(newDepartment);
-            var departments = repo.GetAllDepartments();
+            //repo.InsertDepartment(newDepartment);
+            //var departments = repo.GetAllDepartments();
 
-            foreach(var d in departments)
-            {
-                Console.WriteLine(d.Name);
-            }
+            //foreach(var d in departments)
+            //{
+            //    Console.WriteLine(d.Name);
+            //}
 
             var pRepo = new DapperProductRepository(conn);
             Console.WriteLine("Type a new Product Name");
@@ -47,19 +47,12 @@ namespace BestBuyBestPractices
                 Console.WriteLine($"{p.ProductID} {p.Name} {p.Price} {p.CategoryID} {p.StockLevel}");
             }
 
-            pRepo.CreateProduct(newProductName, newProductPrice, 4);
-            products = pRepo.GetAllProducts();
-
-            foreach (var p in products)
-            {
-                Console.WriteLine($"{p.ProductID} {p.Name} {p.Price} {p.CategoryID} {p.StockLevel}");
-            }
             Console.WriteLine();
             Console.WriteLine("Type the productID to change its name(int)");
             var productID = int.Parse(Console.ReadLine());
             Console.WriteLine("Type the new Name");
-            newProductName = Console.ReadLine();
-            pRepo.UpdateProductName(productID, newProductName);
+            newProductPrice = int.Parse(Console.ReadLine());
+            pRepo.UpdateProductName(productID, newProductPrice);
             products = pRepo.GetAllProducts();
 
             foreach (var p in products)

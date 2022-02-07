@@ -20,10 +20,10 @@ namespace BestBuyBestPractices
             new { productName = name, productPrice = price, productCategory = categoryID });
         }
 
-        public void UpdateProductName(int productID, string name)
+        public void UpdateProductName(int productID, double price)
         {
-            _connection.Execute("UPDATE products SET Name = @name WHERE ProductID = @productID;",
-                new { name = name, productID = productID });
+            _connection.Execute("UPDATE products SET Price = @pPrice WHERE ProductID = @productID;",
+                new { pPrice = price, productID = productID });
         }
 
         public void DeleteProduct(int productID)
