@@ -46,6 +46,36 @@ namespace BestBuyBestPractices
             {
                 Console.WriteLine($"{p.ProductID} {p.Name} {p.Price} {p.CategoryID} {p.StockLevel}");
             }
+
+            pRepo.CreateProduct(newProductName, newProductPrice, 4);
+            products = pRepo.GetAllProducts();
+
+            foreach (var p in products)
+            {
+                Console.WriteLine($"{p.ProductID} {p.Name} {p.Price} {p.CategoryID} {p.StockLevel}");
+            }
+            Console.WriteLine();
+            Console.WriteLine("Type the productID to change its name(int)");
+            var productID = int.Parse(Console.ReadLine());
+            Console.WriteLine("Type the new Name");
+            newProductName = Console.ReadLine();
+            pRepo.UpdateProductName(productID, newProductName);
+            products = pRepo.GetAllProducts();
+
+            foreach (var p in products)
+            {
+                Console.WriteLine($"{p.ProductID} {p.Name} {p.Price} {p.CategoryID} {p.StockLevel}");
+            }
+            Console.WriteLine();
+            Console.WriteLine("Type the productID to Delete from table(int)");
+            productID = int.Parse(Console.ReadLine());
+            pRepo.DeleteProduct(productID);
+            products = pRepo.GetAllProducts();
+
+            foreach (var p in products)
+            {
+                Console.WriteLine($"{p.ProductID} {p.Name} {p.Price} {p.CategoryID} {p.StockLevel}");
+            }
         }
     }
 }
